@@ -1,0 +1,225 @@
+this is site 1
+<!DOCTYPE html>
+<html>
+<head>
+<title>Furniture Shop</title>
+<style>
+  /* CSS styles here (more refined and visually appealing) */
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+
+  .container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .product {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    float: left;
+    width: 30%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .product:hover {
+    transform: scale(1.05);
+  }
+
+  .product img {
+    max-width: 200px;
+  }
+
+  .product button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .navigation {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .navigation a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 15px;
+  }
+
+  .navigation a:hover {
+    color: #fff;
+    background-color: #555;
+  }
+
+  .cart-item {
+    list-style: none;
+    margin-bottom: 10px;
+  }
+
+  .order-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Responsive Design (Basic) */
+  @media (max-width: 768px) {
+    .product {
+      width: 45%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="navigation">
+    <a href="#">Home</a>
+    <a href="#about-us">About Us</a>
+    <a href="#contact-us">Contact Us</a>
+    <a href="#" onclick="showCart()">Cart</a>
+  </div>
+
+  <h1>Welcome to Our Furniture Shop</h1>
+
+  <div id="products">
+    <div class="product">
+      <img src="cow1.jpg" alt="Product 1">
+      <h2>Showpiece</h2>
+      <p>Description of Product 1</p>
+      <button onclick="addToCart('product1')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+      <img src="product2.jpg" alt="Product 2">
+      <h2>Product 2</h2>
+      <p>Description of Product 2</p>
+      <button onclick="addToCart('product2')">Add to Cart</button>
+    </div>
+
+    </div>
+
+  <div id="cart" style="display: none;">
+    <h2>Cart</h2>
+    <ul id="cartList">
+    </ul>
+    <button onclick="showOrderForm()">Place Order</button>
+  </div>
+
+  <div id="orderForm" style="display: none;" class="order-form">
+    <h2>Order Form</h2>
+    <form id="orderFormSubmit">
+      <label for="name">Full Name:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+      <label for="phone">Phone Number:</label><br>
+      <input type="tel" id="phone" name="phone" required><br><br>
+      <label for="address">Delivery Address:</label><br>
+      <textarea id="address" name="address" rows="4" cols="50" required></textarea><br><br>
+      <button type="submit">Submit Order</button>
+    </form>
+  </div>
+
+  <div id="about-us" style="display: none;">
+    <h2>About Us</h2>
+    <p>Information about your store.</p>
+  </div>
+
+  <div id="contact-us" style="display: none;">
+    <h2>Contact Us</h2>
+    <p>Contact information for your store.</p>
+  </div>
+
+</div>
+
+<script>
+  let cart = []; 
+
+  function addToCart(productId) {
+    cart.push(productId);
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartList = document.getElementById('cartList');
+    cartList.innerHTML = ''; 
+
+    if (cart.length > 0) {
+      cart.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.textContent = item;
+        cartList.appendChild(listItem);
+      });
+    } else {
+      cartList.innerHTML = '<p>Your cart is empty.</p>';
+    }
+  }
+
+  function showCart() {
+    const cartDiv = document.getElementById('cart');
+    const otherDivs = document.querySelectorAll('div[id!="cart"]'); 
+    otherDivs.forEach(div => {
+      div.style.display = "none";
+    });
+    cartDiv.style.display = "block";
+    updateCart(); 
+  }
+
+  function showOrderForm() {
+    if (cart.length === 0) {
+      alert("Please add items to your cart before placing an order.");
+      return;
+    }
+
+    const cartDiv = document.getElementById('cart');
+    const orderFormDiv = document.getElementById('orderForm');
+    cartDiv.style.display = "none";
+    orderFormDiv.style.display = "block";
+  }
+
+  // Function to send order details (replace with actual implementation)
+  function sendOrder() {
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const address = document.getElementById('address').value;
+
+    // Here, you would typically send the order information to a server
+    // using AJAX or a similar technique.
+
+    // For this example, we'll simply display an alert.
+    alert(`Order placed! Name: ${name}, Phone: ${phone}, Address: ${address}`);
+  }
+
+  // Attach event listener to the order form submit button
+  const orderForm = document.getElementById('orderFormSubmit');
+  orderForm.addEventListener('submit', (event) => {
+    event.preventDefault(); // Prevent default form submission
+    sendOrder();
+  });
+
+</script>
+
+</body>
+</html>
