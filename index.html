@@ -1,3 +1,384 @@
-<h1><br>Hello everyone</br> and my name is aayush kumar and i am hosting this site</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Machine Learning Portfolio</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url("data:image/jpeg;base64,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");
+            background-size: cover;
+            color: #333;
+        }
+.animation img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+    display: block;
+    border-radius: 8px;
+}
 
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            animation: fadeIn 2s;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #f0a500;
+        }
+        section {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1.5s;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            margin: 10px 0;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #666;
+        }
+        .code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+            white-space: pre-wrap;
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        @keyframes slideIn {
+            from {transform: translateY(100px);}
+            to {transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Machine Learning Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#algorithms">Algorithms</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Aayush Kumar, a machine learning enthusiast passionate about creating and implementing algorithms to solve real-world problems. Welcome to my portfolio!</p>
+    </section>
+    <section id="algorithms">
+        <h2>Machine Learning Algorithms</h2>
+
+
+
+
+
+
+        <div class="card">
+    <h3>Logistic Regression</h3>
+    <p>Logistic regression is used for binary classification problems...</p>
+    <!-- Image or animation related to Logistic Regression -->
+    <div class="animation">
+        <img src="https://i.pinimg.com/originals/86/bb/7a/86bb7af29c41c40c2fae108f0f0a442b.gif">
+    </div>
+    <button onclick="showExample('logistic')">Show Example</button>
+    <pre id="logistic" class="code">from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+accuracy = model.score(X_test, y_test)
+print(accuracy)</pre>
+</div>
+
+
+
+
+
+
+        <div class="card">
+            <h3>Linear Regression</h3>
+            <p>Linear Regression predicts a continuous output based on input features...</p>
+<div class="animation">
+        <img src="https://gbhat.com/assets/gifs/linear_regression.gif">
+    </div>            
+            <button onclick="showExample('linearRegression')">Show Example</button>
+            <pre id="linearRegression" class="code">from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+print(predictions)</pre>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="card">
+            <h3>Polynomial Regression</h3>
+            <p>Polynomial Regression extends Linear Regression by fitting a polynomial curve...</p>
+<div class="animation">
+        <img src="https://gbhat.com/assets/gifs/polynomial_regression_fit.gif">
+    </div>
+            <button onclick="showExample('polynomialRegression')">Show Example</button>
+            <pre id="polynomialRegression" class="code">from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+poly = PolynomialFeatures(degree=2)
+X_poly = poly.fit_transform(X_train)
+model = LinearRegression()
+model.fit(X_poly, y_train)</pre>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="card">
+            <h3>Decision Tree</h3>
+            <p>Decision Tree is a non-parametric supervised learning method used for classification and regression...</p>
+<div class="animation">
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*XNRAIk1XTVCt7USKAKcVXw.gif">
+    </div>            
+<button onclick="showExample('decisionTree')">Show Example</button>
+            <pre id="decisionTree" class="code">from sklearn.tree import DecisionTreeClassifier
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+accuracy = model.score(X_test, y_test)
+print(accuracy)</pre>
+        </div>
+
+
+
+
+
+
+
+        <div class="card">
+            <h3>Random Forest</h3>
+            <p>Random Forest is an ensemble learning method that combines multiple decision trees...</p>
+ <div class="animation">
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*bYGSIgMlmVdedFJaE6PuBg.gif" alt="Random Forest Animation" style="width:100%; border-radius:8px;">
+    </div>            
+<button onclick="showExample('randomForest')">Show Example</button>
+            <pre id="randomForest" class="code">from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+accuracy = model.score(X_test, y_test)
+print(accuracy)</pre>
+        </div>
+
+
+
+
+
+
+        <div class="card">
+            <h3>Gradient Boosting</h3>
+            <p>Gradient Boosting is an ensemble technique that builds models in a stage-wise fashion...</p>
+<div class="animation">
+        <img src="https://uc-r.github.io/public/images/analytics/gbm/boosted_stumps.gif">
+    </div>            
+<button onclick="showExample('gradientBoosting')">Show Example</button>
+            <pre id="gradientBoosting" class="code">from sklearn.ensemble import GradientBoostingClassifier
+model = GradientBoostingClassifier()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+accuracy = model.score(X_test, y_test)
+print(accuracy)</pre>
+        </div>
+
+
+
+
+
+
+
+        <div class="card">
+            <h3>k-Nearest Neighbors (k-NN)</h3>
+            <p>k-NN is a simple, instance-based learning algorithm used for classification and regression...</p>
+<div class="animation">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/KNN_decision_surface_animation.gif">
+    </div>           
+ <button onclick="showExample('knn')">Show Example</button>
+            <pre id="knn" class="code">from sklearn.neighbors import KNeighborsClassifier
+model = KNeighborsClassifier(n_neighbors=3)
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+accuracy = model.score(X_test, y_test)
+print(accuracy)</pre>
+        </div>
+
+
+
+
+
+
+
+        <div class="card">
+            <h3>Support Vector Machine (SVM)</h3>
+            <p>SVM is a supervised learning algorithm used for classification and regression...</p>
+<div class="animation">
+        <img src="https://torchbearer.readthedocs.io/en/0.2.2/_images/svm_fit.gif">
+    </div>            
+<button onclick="showExample('svm')">Show Example</button>
+            <pre id="svm" class="code">from sklearn.svm import SVC
+model = SVC(kernel='linear')
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+accuracy = model.score(X_test, y_test)
+print(accuracy)</pre>
+        </div>
+
+
+
+
+
+
+        <div class="card">
+            <h3>Ridge, Lasso, and ElasticNet</h3>
+            
+		            <p>These are regularization techniques used to prevent overfitting in regression models.</p>
+<div class="animation">
+        <img src="https://www.alexejgossmann.com/images/penalty_function_contours/fused_penalty_balls.gif">
+    </div>            
+<button onclick="showExample('regularization')">Show Example</button>
+            <pre id="regularization" class="code">from sklearn.linear_model import Ridge, Lasso, ElasticNet
+
+
+
+# Ridge Regression
+ridge = Ridge(alpha=1.0)
+ridge.fit(X_train, y_train)
+
+# Lasso Regression
+lasso = Lasso(alpha=0.1)
+lasso.fit(X_train, y_train)
+
+# ElasticNet
+elasticnet = ElasticNet(alpha=0.1, l1_ratio=0.5)
+elasticnet.fit(X_train, y_train)</pre>
+        </div>
+
+
+
+
+
+        <div class="card">
+            <h3>XGBoost</h3>
+            <p>XGBoost is an optimized gradient boosting framework used for supervised learning problems.</p>
+<div class="animation">
+        <img src="https://miro.medium.com/v2/resize:fit:1280/0*xCvlTYTSaf_ycyqR.gif">
+    </div>            
+<button onclick="showExample('xgboost')">Show Example</button>
+            <pre id="xgboost" class="code">from xgboost import XGBClassifier
+model = XGBClassifier()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+accuracy = model.score(X_test, y_test)
+print(accuracy)</pre>
+        </div>
+
+
+
+
+
+        <div class="card">
+            <h3>Gradient Descent and its Variants</h3>
+            <p>Gradient Descent is an optimization algorithm used to minimize the cost function in machine learning.</p>
+<div class="animation">
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*47skUygd3tWf3yB9A10QHg.gif">
+    </div>            
+<button onclick="showExample('gradientDescent')">Show Example</button>
+            <pre id="gradientDescent" class="code"># Gradient Descent Variants
+
+# Batch Gradient Descent
+theta = np.zeros(X_train.shape[1])
+for _ in range(epochs):
+    gradients = -2 * X_train.T.dot(y_train - X_train.dot(theta)) / len(y_train)
+    theta -= learning_rate * gradients
+
+# Stochastic Gradient Descent
+for i in range(len(X_train)):
+    gradients = -2 * X_train[i].T * (y_train[i] - X_train[i].dot(theta))
+    theta -= learning_rate * gradients
+
+# Mini-Batch Gradient Descent
+batch_size = 32
+for i in range(0, len(X_train), batch_size):
+    X_batch = X_train[i:i+batch_size]
+    y_batch = y_train[i:i+batch_size]
+    gradients = -2 * X_batch.T.dot(y_batch - X_batch.dot(theta)) / batch_size
+    theta -= learning_rate * gradients</pre>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 My Machine Learning Portfolio</p>
+    </footer>
+    <script>
+        function showExample(id) {
+            const element = document.getElementById(id);
+            element.style.display = element.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>
 
