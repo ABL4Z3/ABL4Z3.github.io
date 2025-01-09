@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .navigation {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .navigation a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            margin: 0 10px;
+        }
+
+        .navigation a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            width: 30%;
+            transition: transform 0.2s;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .product p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .product input {
+            width: 60px;
+            margin: 10px 0;
+        }
+
+        .carousel-container {
+            position: relative;
+        }
+
+        .carousel-container img {
+            display: none;
+        }
+
+        .carousel-container img:first-child {
+            display: block;
+        }
+
+        #cart {
+            margin-top: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .product {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="navigation">
+            <a href="#">Home</a>
+            <a href="#about-us">About Us</a>
+            <a href="#contact-us">Contact Us</a>
+        </div>
+
+        <h1 style="text-align:center; margin: 20px 0;">Welcome to Our Furniture Shop</h1>
+
+        <div class="products">
+            <div class="product">
+                <div class="carousel-container">
+                    <img src="cow1.jpg" alt="Showpiece">
+                    <img src="cow2.jpg" alt="Showpiece">
+                    <img src="cow3.jpg" alt="Showpiece">
+                </div>
+                <h2>Showpiece</h2>
+                <p>Elegant and stylish showpiece for your home decor.</p>
+                <label for="quantity1">Quantity:</label>
+                <input type="number" id="quantity1" name="quantity1" min="1" value="1">
+                <button onclick="addToCart('Showpiece', document.getElementById('quantity1').value)">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="product2.jpg" alt="Wooden Chair">
+                <h2>Wooden Chair</h2>
+                <p>Comfortable and durable wooden chair for any room.</p>
+                <label for="quantity2">Quantity:</label>
+                <input type="number" id="quantity2" name="quantity2" min="1" value="1">
+                <button onclick="addToCart('Wooden Chair', document.getElementById('quantity2').value)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div id="cart" style="display: none;">
+            <h2>Your Cart</h2>
+            <ul id="cartList"></ul>
+            <button onclick="checkout()">Proceed to Checkout</button>
+        </div>
+
+        <div id="checkoutForm" style="display: none;">
+            <h2>Checkout</h2>
+            <form onsubmit="processOrder(event)">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="mobile">Mobile Number:</label><br>
+                <input type="tel" id="mobile" name="mobile" required><br><br>
+                <label for="address">Address:</label><br>
+                <textarea id="address" name="address" rows="4" cols="50" required></textarea><br><br>
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+
+        <div id="about-us" style="margin-top: 40px;">
+            <h2>About Us</h2>
+            <p>We offer a wide range of high-quality furniture to beautify your home.</p>
+        </div>
+
+        <div id="contact-us" style="margin-top: 40px;">
+            <h2>Contact Us</h2>
+            <p>Email: support@furnitureshop.com</p>
+            <p>Phone: +123 456 789</p>
+        </div>
+    </div>
+
+    <script>
+        const carousels = document.querySelectorAll('.carousel-container');
+
+        carousels.forEach(carousel => {
+            let currentIndex = 0;
+            const images = carousel.querySelectorAll('img');
+
+            function nextImage() {
+                images[currentIndex].style.display = 'none';
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].style.display = 'block';
+            }
+
+            setInterval(nextImage, 3000);
+        });
+
+        let cart = [];
+
+        function addToCart(productName, quantity) {
+            cart.push({ productName, quantity });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById('cartList');
+            cartList.innerHTML = '';
+
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.quantity} x ${item.productName}`;
+                cartList.appendChild(listItem);
+            });
+
+            document.getElementById('cart').style.display = 'block';
+        }
+
+        function checkout() {
+            document.getElementById('cart').style.display = 'none';
+            document.getElementById('checkoutForm').style.display = 'block';
+        }
+function processOrder(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const mobile = document.getElementById('mobile').value;
+    const address = document.getElementById('address').value;
+
+    // Collect cart details
+    const orderDetails = {
+        name,
+        mobile,
+        address,
+        cart,
+    };
+
+    fetch('http://localhost:8000/Desktop', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderDetails),
+    })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            cart = [];
+            updateCart();
+            document.getElementById('checkoutForm').style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Failed to place the order. Please try again.');
+        });
+}
+
+
+    </script>
+</body>
+</html>
